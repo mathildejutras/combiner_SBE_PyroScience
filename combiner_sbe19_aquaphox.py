@@ -347,6 +347,12 @@ dfCTDl = dfCTDl.sort_values("DateTime")
 dfCTDl["DateTime"] = pd.to_datetime(dfCTDl["DateTime"]).astype("datetime64[ns]")
 dfOpt_test["DateTime"] = pd.to_datetime(dfOpt_test["DateTime"]).astype("datetime64[ns]")
 
+# garder juste certaines variables
+var_opt = ['oxysat_%', 'oxy_micromol/L']
+var_opt_l = [each for each in var_opt if each in list(dfOpt_test.keys())]
+var_ctd = ['depSM', 'sal00', 'tv290C', 'potemp090C', 'density00', 'prdM']
+var_ctd_l = [each for each in var_ctd if each in list(dfCTDl.keys())]
+
 df = pd.merge_asof(dfCTDl,dfOpt_test,on="DateTime",direction="nearest",tolerance=pd.Timedelta("1m"))
 
 # vérifier sur les profils
@@ -373,18 +379,17 @@ plt.close()
 # --------------
 # Créer le dataset final
 
-dfsave = df[['depSM', 'tv290C', 'potemp090C', 'prdM', 'density00', 'DateTime',  # de la CTD
-            'oxysat_%', 'optode_temp_degC', 'no_prof_x']]  # de l'optode
-dfsave = dfsave.rename({'depSM':'depth_m', 'tv290C':'temp_degC', 'potemp090C':'potemp_degC',
-                        'sal00':'psal', 'prDM':'pres_db', 'density00':'dens_kgm3',
+dfsave = df[['DateTime',  'no_prof_x']+var_ctd_l+var_opt_l ]
+dfsave = dfsave.rename(columns={'depSM':'depth_m', 'tv290C':'temp_degC', 'potemp090C':'potemp_degC',
+                        'sal00':'psal_psu', 'prDM':'pres_db', 'density00':'dens_kgm3', 'prdM':'pres_db',
                         'no_prof_x':'no_prof'})
 
 path = input('Où souhaitez-vous sauvegarder le fichier (. pour le dossier présent) ')
-if path[-1] == '/' :
-    path = path[:-2]
+if path[-1] != '/' :
+    path = path+'/'
 #name = input('Quel nom souhaitez-vous donner au fichier? ')
 name = 'CTD+optode'
-namefile = '%s/%s.csv'%(path,name)
+namefile = '%s%s.csv'%(path,name)
 dfsave.to_csv(namefile)
 print(' ')
 print('Fichier %s sauvegardé'%namefile)
