@@ -379,8 +379,7 @@ dfsave = dfsave.rename({'depSM':'depth_m', 'tv290C':'temp_degC', 'potemp090C':'p
                         'sal00':'psal', 'prDM':'pres_db', 'density00':'dens_kgm3',
                         'no_prof_x':'no_prof'})
 
-#path = input('Où souhaitez-vous sauvegarder le fichier (. pour le dossier présent) ')
-path = '.'
+path = input('Où souhaitez-vous sauvegarder le fichier (. pour le dossier présent) ')
 if path[-1] == '/' :
     path = path[:-2]
 #name = input('Quel nom souhaitez-vous donner au fichier? ')
