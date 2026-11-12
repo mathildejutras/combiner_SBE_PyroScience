@@ -1,0 +1,51 @@
+name: Construire les exécutables
+
+# Se lance :
+#  - à la main, depuis l'onglet "Actions" de GitHub (bouton "Run workflow")
+#  - automatiquement quand on pousse une étiquette de version (ex. v1.0)
+on:
+  workflow_dispatch:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write   # nécessaire pour publier dans les "Releases"
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-latest
+            nom: windows
+          - os: macos-latest      # Mac Apple Silicon (M1/M2/M3...)
+            nom: macos
+          - os: ubuntu-22.04      # version ancienne = compatible avec plus de Linux
+            nom: linux
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Installer les dépendances
+        run: pip install pyinstaller matplotlib numpy "pandas>=2.2,<4"
+
+      - name: Construire l'exécutable
+        run: pyinstaller --onefile --name combiner_sbe19_aquaphox-${{ matrix.nom }} combiner_sbe19_aquaphox.py
+
+      - name: Rendre l'exécutable téléchargeable (onglet Actions)
+        uses: actions/upload-artifact@v4
+        with:
+          name: combiner_sbe19_aquaphox-${{ matrix.nom }}
+          path: dist/*
+
+      - name: Publier dans les Releases (seulement pour une version vX.Y)
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/*
