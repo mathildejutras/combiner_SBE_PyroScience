@@ -6,9 +6,9 @@ Il nécessite que les données SeaBird et PyroScience soient sauvegardées dans 
 
 ### Instructions : 
 
-1. Téléchargez l'exécutable approprié pour votre OS.
+1. Sur le côté, cliquez sur *Releases*, puis sur l'exécutable approprié pour votre OS afin de le télécharger
 
-2. Double cliquez sur l'icone de l'exécutable
+2. Une fois téléchargé, double-cliquez sur l'icone de l'exécutable
 
    - **Linux** : Ouvrez un terminal, rendez-vous dans le dossier du téléchargement, puis tapez
 
