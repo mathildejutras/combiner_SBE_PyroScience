@@ -10,7 +10,11 @@ Il nécessite que les données SeaBird et PyroScience soient sauvegardées dans 
 
 2. Double cliquez sur l'icone de l'exécutable
 
-   - **Linux** : 
+   - **Linux** : Ouvrez un terminal, rendez-vous dans le dossier du téléchargement, puis tapez
+
+     ``chmod +x combiner_sbe19_aquaphox-linux``
+     
+     ``./combiner_sbe19_aquaphox-linux``
 
 
    - **Windows** : Windows va afficher "Windows a protégé votre ordinateur". Cliquez sur Informations complémentaires → Exécuter quand même
