@@ -10,7 +10,7 @@ Il nécessite que les données SeaBird et PyroScience soient sauvegardées dans 
 
 2. Une fois téléchargé, extraire le .zip (sauf sous Windows) et double-cliquez sur l'icone de l'exécutable
 
-   - **Linux** : Aucune instruction supplémentaire
+   - **Linux** : Aucune instruction supplémentaire. Si rien ne se passe au moment de cliquer sur l'icone, exécutez le programme depuis un terminal (``./combiner_sbe19_aquaphox-linux``)
 
    - **Windows** : Windows va afficher "Windows a protégé votre ordinateur". Cliquez sur Informations complémentaires → Exécuter quand même
 
