@@ -2,7 +2,7 @@
 
 Cet outil sert à assigner les données d'oxygène de la sonde AquaPhox-L aux profils mesurés par la sonde SBE19. Il lit les fichiers CNV extraits par le logiciel SeaBird et les fichiers txt ou csv extraits par le logiciel PyroScience et les combine en un seul fichier.
 
-Il nécessite que les données SeaBird et PyroScience soient sauvegardées dans des dossiers respectifs ou dans un dossier commun.
+Il nécessite que les données SeaBird et PyroScience soient sauvegardées sous un dossier commun.
 
 ### Instructions : 
 
