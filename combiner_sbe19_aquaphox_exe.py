@@ -164,6 +164,15 @@ def main():
         import os
         os.chdir(Path(sys.executable).parent)
 
+    # Linux : si lancé sans terminal (double-clic), se relancer dans un terminal
+    if sys.platform.startswith("linux") and getattr(sys, "frozen", False) and not sys.stdin.isatty():
+        import shutil, subprocess
+        for term in ["gnome-terminal", "konsole", "xfce4-terminal", "x-terminal-emulator", "xterm"]:
+            if shutil.which(term):
+                sep = "--" if term == "gnome-terminal" else "-e"
+                subprocess.Popen([term, sep, sys.executable])
+                sys.exit()
+
     # Charger les données 
     while True : 
         path = input('Inscrivez le nom du dossier contenant les données :  ')
