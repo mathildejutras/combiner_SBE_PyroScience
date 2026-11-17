@@ -158,8 +158,13 @@ def seul(source, cible, tol=np.timedelta64(6, "h")):
 # ----------------------------------------------------------------------
 
 def main():
-    # Charger les données 
 
+    # Travailler dans le dossier de l'exécutable, peu importe comment il a été lancé
+    if getattr(sys, "frozen", False):
+        import os
+        os.chdir(Path(sys.executable).parent)
+
+    # Charger les données 
     while True : 
         path = input('Inscrivez le nom du dossier contenant les données :  ')
         try: 

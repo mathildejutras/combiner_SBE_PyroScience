@@ -38,6 +38,13 @@ jobs:
       - name: Construire l'exécutable
         run: pyinstaller --onefile --hidden-import PIL._tkinter_finder --name combiner_sbe19_aquaphox-${{ matrix.nom }} combiner_sbe19_aquaphox_exe.py
 
+      - name: Mettre l'exécutable dans un ZIP (Mac et Linux)
+        if: matrix.nom != 'windows'
+        run: |
+          cd dist
+          zip combiner_sbe19_aquaphox-${{ matrix.nom }}.zip combiner_sbe19_aquaphox-${{ matrix.nom }}
+          rm combiner_sbe19_aquaphox-${{ matrix.nom }}
+          
       - name: Rendre l'exécutable téléchargeable (onglet Actions)
         uses: actions/upload-artifact@v4
         with:
