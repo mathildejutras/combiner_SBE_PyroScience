@@ -6,9 +6,11 @@ Il nécessite que les données SeaBird et PyroScience soient sauvegardées sous 
 
 ### Instructions : 
 
-1. Sur le côté, cliquez sur *Releases*, puis sur l'exécutable approprié pour votre OS afin de le télécharger
+1. Sur le côté, cliquez sur *Releases*, puis sur l'exécutable approprié pour votre OS afin de le télécharger.
 
-2. Une fois téléchargé, extraire le .zip (sauf sous Windows) et double-cliquez sur l'icone de l'exécutable
+   Attendez quelques instants (jusqu'à une minute).
+
+3. Une fois téléchargé, extraire le .zip (sauf sous Windows) et double-cliquez sur l'icone de l'exécutable
 
    - **Linux** : Aucune instruction supplémentaire. Si rien ne se passe au moment de cliquer sur l'icone, exécutez le programme depuis un terminal (``./combiner_sbe19_aquaphox-linux``)
 
@@ -16,4 +18,6 @@ Il nécessite que les données SeaBird et PyroScience soient sauvegardées sous 
 
    - **MacOS** : MacOS bloquera le premier lancement de l’application. Allez dans Réglages Système → Confidentialité et sécurité → Ouvrir quand même.
 
-3. Suivez les instructions
+4. Suivez les instructions.
+
+   Les deux instruments sont équippés de sondes de température. On vous présentera des séries temporelles ces sondes, et on vous demandera de vérifier sur elles sont alignées. L'objectif est de les caller les unes sur les autres (horizontalement). Il est normal qu'il y ait une différence dans la température mesurée par les deux sondes (différence verticale).
